@@ -1,0 +1,84 @@
+!
+enable
+configure terminal
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R2
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX15241X55
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description R2 LAN Default Gateway
+ ip address 192.8.2.1 255.255.255.0
+ no shutdown
+!
+interface Serial0/0/0
+  description WAN link to R3
+  ip address 192.8.0.5 255.255.255.252
+  clock rate 64000
+  no shutdown
+!
+interface Serial0/0/1
+  description WAN link to R1
+  ip address 192.8.0.2 255.255.255.252
+  no shutdown
+!
+router rip
+ network 192.8.0.0
+ network 192.8.2.0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
