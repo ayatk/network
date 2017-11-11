@@ -59,6 +59,7 @@ interface Serial0/0/1
   no shutdown
 !
 router rip
+ version 2
  network 192.8.0.0
  network 192.8.2.0
 !
